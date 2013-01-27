@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "NSDate+dateRanges.h"
 int main(int argc, const char * argv[])
 {
 
@@ -16,6 +16,9 @@ int main(int argc, const char * argv[])
         // insert code here...
         NSLog(@"Hello, World!");
         
+        NSDate *now = [NSDate date];
+        NSLog(@"Start of last week: %@", [[now startOfWeekBefore]description]);
+        NSLog(@"End of last week: %@", [[now endOfWeekBefore]description]);
     }
     return 0;
 }

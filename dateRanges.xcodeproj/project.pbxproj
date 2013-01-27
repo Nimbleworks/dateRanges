@@ -10,6 +10,7 @@
 		B30CFF9F16B5B0280070EFCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30CFF9E16B5B0280070EFCF /* Foundation.framework */; };
 		B30CFFA216B5B0280070EFCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CFFA116B5B0280070EFCF /* main.m */; };
 		B30CFFA616B5B0280070EFCF /* dateRanges.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = B30CFFA516B5B0280070EFCF /* dateRanges.1 */; };
+		B30CFFAE16B5B0440070EFCF /* NSDate+dateRanges.m in Sources */ = {isa = PBXBuildFile; fileRef = B30CFFAD16B5B0440070EFCF /* NSDate+dateRanges.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		B30CFFA116B5B0280070EFCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B30CFFA416B5B0280070EFCF /* dateRanges-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dateRanges-Prefix.pch"; sourceTree = "<group>"; };
 		B30CFFA516B5B0280070EFCF /* dateRanges.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = dateRanges.1; sourceTree = "<group>"; };
+		B30CFFAC16B5B0440070EFCF /* NSDate+dateRanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+dateRanges.h"; sourceTree = "<group>"; };
+		B30CFFAD16B5B0440070EFCF /* NSDate+dateRanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+dateRanges.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 		B30CFFA016B5B0280070EFCF /* dateRanges */ = {
 			isa = PBXGroup;
 			children = (
+				B30CFFAC16B5B0440070EFCF /* NSDate+dateRanges.h */,
+				B30CFFAD16B5B0440070EFCF /* NSDate+dateRanges.m */,
 				B30CFFA116B5B0280070EFCF /* main.m */,
 				B30CFFA516B5B0280070EFCF /* dateRanges.1 */,
 				B30CFFA316B5B0280070EFCF /* Supporting Files */,
@@ -140,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B30CFFA216B5B0280070EFCF /* main.m in Sources */,
+				B30CFFAE16B5B0440070EFCF /* NSDate+dateRanges.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
