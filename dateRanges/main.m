@@ -17,6 +17,7 @@ int main(int argc, const char * argv[])
         NSLog(@"End of last week: %@", [[now endOfWeekBefore]description]);
         NSLog(@"Start of today:%@", [[now startOfDay]description]);
         NSLog(@"End of today:%@", [[now endOfDay]description]);
+        NSLog(@"end of 5 days time:%@",[[now endOfDayWithOffset:5]description]);
         NSLog(@"Start of year, 50 years ago:%@", [[now startOfYearWithOffset:-50]description]);
         NSLog(@"End of year, 50 years ago:%@", [[now endOfYearWithOffset:-50]description]);
     }
