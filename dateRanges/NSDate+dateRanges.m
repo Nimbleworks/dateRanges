@@ -194,12 +194,12 @@
     
     NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
     
-    [componentsToSubtract setWeekday:([weekComponents weekday] - [gregorian firstWeekday])];
+    [componentsToSubtract setWeekday:([gregorian firstWeekday])];
     
     NSDate *endOfWeekDate = [gregorian dateByAddingComponents:componentsToSubtract toDate:self options:0];
     NSDateComponents *components = [gregorian components: (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate: endOfWeekDate];
     
-    return [[gregorian dateFromComponents: components] dateByAddingTimeInterval:(604800*offset)];
+    return [[gregorian dateFromComponents: components] dateByAddingTimeInterval:((604800*offset)-86400)];
 }
 
 -(NSDate*)endOfWeekWithOffset:(int)offset
@@ -207,11 +207,9 @@
     NSCalendar *gregorian = [NSCalendar currentCalendar];
     
     // Get the weekday component of the current date
-    NSDateComponents *weekComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:self];
     
     NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
-    
-    [componentsToSubtract setWeekday:([weekComponents weekday] - [gregorian firstWeekday])];
+    [componentsToSubtract setWeekday:(-1+[gregorian firstWeekday])];
     
     NSDate *endOfWeekDate = [gregorian dateByAddingComponents:componentsToSubtract toDate:self options:0];
     NSDateComponents *components = [gregorian components: (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate: endOfWeekDate];
@@ -222,7 +220,6 @@
 -(NSDate*)startOfMonthWithOffset:(int)offset
 {
     NSCalendar *gregorian = [NSCalendar currentCalendar];
-    NSDateComponents *monthComponents = [gregorian components:NSMonthCalendarUnit fromDate:self];
     NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
     NSDate *startOfMonthDate = nil;
     NSDateComponents *components = nil;
@@ -239,7 +236,6 @@
     NSCalendar *gregorian = [NSCalendar currentCalendar];
     
     // Get the weekday component of the current date
-    NSDateComponents *monthComponents = [gregorian components:NSMonthCalendarUnit fromDate:self];
     NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
     NSDateComponents *components = nil;
     NSDate *endOfMonthDate = nil;
