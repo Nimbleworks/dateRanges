@@ -208,6 +208,10 @@
 		B30CFFAA16B5B0280070EFCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "dateRanges/dateRanges-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -217,6 +221,10 @@
 		B30CFFAB16B5B0280070EFCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "dateRanges/dateRanges-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -242,6 +250,7 @@
 				B30CFFAB16B5B0280070EFCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

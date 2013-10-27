@@ -222,16 +222,14 @@
 -(NSDate*)startOfMonthWithOffset:(int)offset
 {
     NSCalendar *gregorian = [NSCalendar currentCalendar];
-    
-    // Get the weekday component of the current date
     NSDateComponents *monthComponents = [gregorian components:NSMonthCalendarUnit fromDate:self];
-    
     NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
+    NSDate *startOfMonthDate = nil;
+    NSDateComponents *components = nil;
     
-    [componentsToSubtract setMonth: ([monthComponents month]+offset)];
-    NSDate *startOfMonthDate = [gregorian dateByAddingComponents:componentsToSubtract toDate:self options:0];
-    
-    NSDateComponents *components = [gregorian components: (NSYearCalendarUnit | NSMonthCalendarUnit) fromDate: startOfMonthDate];
+    [componentsToSubtract setMonth: offset];
+    startOfMonthDate = [gregorian dateByAddingComponents:componentsToSubtract toDate:self options:0];
+    components = [gregorian components: (NSYearCalendarUnit | NSMonthCalendarUnit) fromDate: startOfMonthDate];
     
     return [gregorian dateFromComponents: components];
 }
@@ -242,14 +240,13 @@
     
     // Get the weekday component of the current date
     NSDateComponents *monthComponents = [gregorian components:NSMonthCalendarUnit fromDate:self];
-    
     NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
+    NSDateComponents *components = nil;
+    NSDate *endOfMonthDate = nil;
     
-    [componentsToSubtract setMonth: ([monthComponents week]+offset+1)];
-
-    NSDate *endOfMonthDate = [gregorian dateByAddingComponents:componentsToSubtract toDate:self options:0];
-    
-    NSDateComponents *components = [gregorian components: (NSYearCalendarUnit | NSMonthCalendarUnit) fromDate: endOfMonthDate];
+    [componentsToSubtract setMonth: (offset+1)];
+    endOfMonthDate = [gregorian dateByAddingComponents:componentsToSubtract toDate:self options:0];
+    components = [gregorian components: (NSYearCalendarUnit | NSMonthCalendarUnit) fromDate: endOfMonthDate];
     
     return [[gregorian dateFromComponents: components] dateByAddingTimeInterval:-0.1];
 }
