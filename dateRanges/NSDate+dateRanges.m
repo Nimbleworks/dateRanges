@@ -190,7 +190,6 @@
     NSCalendar *gregorian = [NSCalendar currentCalendar];
     
     // Get the weekday component of the current date
-    NSDateComponents *weekComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:self];
     
     NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
     

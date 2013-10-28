@@ -13,8 +13,15 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         NSDate *now = [NSDate date];
+        NSDate *testDate = [NSDate dateWithString:@"2012-01-01 00:00:00"];
+        
+        if([[[testDate startOfYearWithOffset:+1] description] isEqualToString:@"2013-01-01 00:00:00"]){
+            NSLog(@"%@", [testDate startOfYearWithOffset:+1]);
+        }else{
+            NSLog(@"Test Passed");
+        }
+        
         NSLog(@"Start of this week:             %@", [[now startOfThisWeek]description]);
-
         NSLog(@"Start of last week:             %@", [[now startOfWeekBefore]description]);
         NSLog(@"End of last week:               %@", [[now endOfWeekBefore]description]);
         NSLog(@"Start of today:                 %@", [[now startOfDay]description]);
