@@ -170,12 +170,12 @@
 
 -(NSDate*)endOfDayWithOffset:(int)offset
 {
-    offset = offset+1;
+
     NSCalendar *gregorian = [NSCalendar currentCalendar];
     
     // Get the weekday component of the current date
     NSDateComponents *weekdayComponents = [gregorian components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
-    [weekdayComponents setDay:[weekdayComponents day]+offset];
+    [weekdayComponents setDay:[weekdayComponents day]+offset+1];
     
     return [gregorian dateFromComponents: weekdayComponents] ;
 }
