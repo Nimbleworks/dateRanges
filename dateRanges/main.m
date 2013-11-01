@@ -12,27 +12,75 @@ int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
-        NSDate *now = [NSDate date];
-        NSDate *testDate = [NSDate dateWithString:@"2012-01-01 00:00:00"];
+        //NSDate *now = [NSDate date];
+        NSDate *testDate = [NSDate dateWithNaturalLanguageString:@"2013-11-14 12:00:00"];
+        //NSLog(@"%@", [[testDate startOfYearWithOffset:1] description]);
         
-        if([[[testDate startOfYearWithOffset:+1] description] isEqualToString:@"2013-01-01 00:00:00"]){
-            NSLog(@"%@", [testDate startOfYearWithOffset:+1]);
-        }else{
-            NSLog(@"Test Passed");
+        // Test the Weeks
+        if(![[[testDate startOfThisWeek] description] isEqualToString:@"2013-11-10 00:00:00 +0000"]){
+            NSLog(@"Start of this Week Failed: %@",[[testDate startOfThisWeek] description] );
+            return 1;
+        }
+        if(![[[testDate endOfThisWeek] description] isEqualToString:@"2013-11-16 00:00:00 +0000"]){
+            NSLog(@"End of this Week Failed: %@",[[testDate endOfThisWeek] description] );
+            return 1;
         }
         
-        NSLog(@"Start of this week:             %@", [[now startOfThisWeek]description]);
-        NSLog(@"Start of last week:             %@", [[now startOfWeekBefore]description]);
-        NSLog(@"End of last week:               %@", [[now endOfWeekBefore]description]);
-        NSLog(@"Start of today:                 %@", [[now startOfDay]description]);
-        NSLog(@"End of today:                   %@", [[now endOfDay]description]);
-        NSLog(@"Start of year, 50 years ago:    %@", [[now startOfYearWithOffset:-50]description]);
-        NSLog(@"End of year, 50 years ago:      %@", [[now endOfYearWithOffset:-50]description]);
-        NSLog(@"Start of this month:            %@", [[now startOfThisMonth]description]);
-        NSLog(@"End of this month:              %@", [[now endOfThisMonth]description]);
-        NSLog(@"Start of last month:            %@", [[now startOfMonthBefore]description]);
-        NSLog(@"End of month before:            %@", [[now endOfMonthBefore]description]);
-        NSLog(@"start of 10 months ago:         %@", [[now startOfMonthWithOffset:-10]description]);
+        if(![[[testDate startOfWeekBefore] description] isEqualToString:@"2013-11-03 00:00:00 +0000"]){
+            NSLog(@"start of week before Failed: %@",[[testDate startOfWeekBefore] description] );
+            return 1;
+        }
+        
+        if (![[[testDate endOfWeekBefore]description] isEqualToString:@"2013-11-09 00:00:00 +0000"]) {
+            NSLog(@"end of week before failed: %@", [[testDate endOfWeekBefore]description]);
+            return 1;
+        }
+        
+        //Test the years
+        if(![[[testDate startOfYearWithOffset:0] description] isEqualToString:@"2013-01-01 00:00:00 +0000"]){
+            NSLog(@"Start of this Year FAILED");
+            return 1;
+        }
+
+        if(![[[testDate startOfYearWithOffset:1] description] isEqualToString:@"2014-01-01 00:00:00 +0000"]){
+            NSLog(@"Start of Year FAILED %@", [[testDate startOfYearWithOffset:1] description]);
+            return 1;
+        }
+        
+        if(![[[testDate endOfThisYear] description] isEqualToString:@"2014-01-01 00:00:00 +0000"]){
+            NSLog(@"end of this Year FAILED %@", [[testDate endOfThisYear] description]);
+            return 1;
+        }
+        
+        if(![[[testDate endOfYearWithOffset:-10] description] isEqualToString:@"2004-01-01 00:00:00 +0000"]){
+            NSLog(@"end of 2004 FAILED %@", [[testDate endOfYearWithOffset:-10] description]);
+            return 1;
+        }
+        
+        
+        //Test the days
+        if(![[[testDate startOfDay]description] isEqualToString:@"2013-11-14 00:00:00 +0000"]){
+            NSLog(@"start of today failed");
+        }
+        
+        if (![[[testDate endOfDay]description] isEqualToString:@"2013-11-15 00:00:00 +0000"]) {
+            NSLog(@"end if day failed: %@", [[testDate endOfDay]description]);
+        }
+        if (![[[testDate endOfDayWithOffset:-10]description] isEqualToString:@"2013-11-05 00:00:00 +0000"]) {
+            NSLog(@"end if day failed: %@", [[testDate endOfDayWithOffset:-10]description]);
+        }
+        
+        // Test the months
+        if(![[[testDate startOfMonthWithOffset:0] description] isEqualToString:@"2013-11-01 00:00:00 +0000"]){
+            NSLog(@"Start of this Month FAILED %@", [[testDate startOfMonthWithOffset:0] description]);
+            return 1;
+        }
+        
+        if(![[[testDate endOfMonthWithOffset:1] description] isEqualToString:@"2014-1-01 00:00:00 +0000"]){
+            NSLog(@"endof month FAILED %@", [[testDate endOfMonthWithOffset:1] description]);
+            return 1;
+        }
+        
     }
     return 0;
 }
