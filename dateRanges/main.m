@@ -63,15 +63,23 @@ int main(int argc, const char * argv[])
             NSLog(@"start of today failed");
         }
         
+        if (![[[testDate startOfDayBefore] description] isEqualToString:@"2013-11-13 00:00:00 +0000"]) {
+            NSLog(@" start of yesterday: FAILEd: %@",[[testDate startOfDayBefore] description]);
+            return 1;
+        }
+        
         if (![[[testDate endOfDay]description] isEqualToString:@"2013-11-15 00:00:00 +0000"]) {
             NSLog(@"end of this day failed: %@", [[testDate endOfDay]description]);
+            return 1;
         }
         if (![[[testDate endOfDayWithOffset:-10]description] isEqualToString:@"2013-11-05 00:00:00 +0000"]) {
             NSLog(@"end if day failed: %@", [[testDate endOfDayWithOffset:-10]description]);
+                        return 1;
         }
         
         if(![[[testDate endOfDayBefore]description] isEqualToString:@"2013-11-14 00:00:00 +0000"]){
             NSLog(@"end of day before failed %@", [[testDate endOfDayBefore]description]);
+                        return 1;
         }
         
         // Test the months

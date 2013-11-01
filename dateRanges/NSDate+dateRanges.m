@@ -153,18 +153,15 @@
 #pragma mark Any Range
 -(NSDate*)startOfDayWithOffset:(int)offset
 {
+
+    
     NSCalendar *gregorian = [NSCalendar currentCalendar];
     
     // Get the weekday component of the current date
-    NSDateComponents *weekdayComponents = [gregorian components:NSDayCalendarUnit fromDate:self];
+    NSDateComponents *weekdayComponents = [gregorian components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+    [weekdayComponents setDay:[weekdayComponents day]+offset];
     
-    NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
-    
-    [componentsToSubtract setDay: ([weekdayComponents weekday]+offset)];
-    NSDate *startofDayDate = [gregorian dateByAddingComponents:componentsToSubtract toDate:self options:0];
-    
-    NSDateComponents *components = [gregorian components: (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate: startofDayDate];
-    return [gregorian dateFromComponents: components];
+    return [gregorian dateFromComponents: weekdayComponents] ;
 
 }
 
